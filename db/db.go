@@ -43,6 +43,7 @@ func SetupDB(){
 		},
 	})
 	dsn5 := os.Getenv("MYSQL_DNS5")
+	//dsn5 := os.Getenv("MYSQL_DNSC")
 	database5,err := gorm.Open(mysql.Open(dsn5), &gorm.Config{
 		Logger: &SqlLogger{},
 		NamingStrategy: schema.NamingStrategy{

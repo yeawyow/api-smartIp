@@ -43,5 +43,5 @@ func getadmitNow(c *gin.Context) {
 		fmt.Println(tx.Error)
 		return
 	}
-	c.JSON(200, gin.H{"result": Ipt})
+	c.IndentedJSON(200,Ipt)
 }
