@@ -35,10 +35,13 @@ func setupIptAPI(router *gin.Engine) {
 
 func getadmitNow(c *gin.Context) {
 	var Ipt []model.Ipt
-	se :="ipt.hn,ipt.an,concat(pt.pname,pt.fname,' ',pt.lname) AS fullname,ward.name AS wardname"
-	join :="left join patient pt on pt.hn=ipt.hn left join ward on ward.ward=ipt.ward"
+	//var Nhso []model.IptNhsoImage
+	se :="ipt.hn,ipt.an,concat(pt.pname,pt.fname,' ',pt.lname) AS fullname,w.ward,w.name AS nameward , " +
+	"CONCAT(ptt.pttype,'  ',ptt.name) AS ptname"
+	join :="left join patient pt on pt.hn=ipt.hn left join ward w on w.ward  left join pttype ptt ON ptt.pttype=ipt.pttype  " 
+	
 	where :="dchtype IS NULL"
-	tx:=db.GetDB5().Model(&Ipt).Where(where).Select(se).Joins(join).Scan(&Ipt)
+	tx:=db.GetDB().Model(&Ipt).Where(where).Select(se).Joins(join).Scan(&Ipt)
 	if tx.Error !=nil{
 		fmt.Println(tx.Error)
 		return

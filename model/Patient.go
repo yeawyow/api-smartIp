@@ -11,7 +11,7 @@ type Patient struct {
 	Fname    string `json:"fname" binding:"required"`
 	Lname    string
 	Birthday time.Time
-	Cid string
+	Cid string `json:"cid"`
 
 
 }

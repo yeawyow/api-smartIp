@@ -9,7 +9,8 @@ require (
 	github.com/joho/godotenv v1.4.0
 	golang.org/x/crypto v0.0.0-20220525230936-793ad666bf5e
 	gorm.io/driver/mysql v1.3.4
-	gorm.io/gorm v1.23.5
+	gorm.io/gorm v1.24.0
+	gorm.io/plugin/dbresolver v1.3.0
 )
 
 require (
@@ -20,7 +21,7 @@ require (
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/goccy/go-json v0.9.7 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.4 // indirect
+	github.com/jinzhu/now v1.1.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect

@@ -6,7 +6,9 @@ type Ipt struct {
 	//Dchdate time.Time
 	//Dchtype string
 	Pttype string
-	//Wardname string
+	Ward string
+	Nameward string
+	Ptname string
 	//Regdate string
 	Fullname string
 	//Regtime time.Time

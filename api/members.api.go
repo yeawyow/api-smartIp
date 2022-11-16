@@ -18,7 +18,8 @@ func setupMembersAPI(router *gin.Engine) {
 		authenAPI.GET("/edituser", edituser)
 		authenAPI.GET("/getmembers", getmembers)
 		authenAPI.POST("/register", register)
-		authenAPI.GET("/getpatient", getpatient)
+		authenAPI.GET("/getpatient/:id", getpatient)
+		authenAPI.GET("/gettest", gettest)
 	
 	}
 }
@@ -73,7 +74,9 @@ c.JSON(http.StatusCreated, &user)
 }
 func getpatient(c *gin.Context){
 	var Patient []model.Patient
-	tx:=db.GetDB5().Last(&Patient)
+	id := c.Param("id")
+	
+	tx:=db.GetDB().Where("cid =?",id).First(&Patient)
 	if tx.Error !=nil{
 		fmt.Println(tx.Error)
 		return
@@ -82,4 +85,14 @@ func getpatient(c *gin.Context){
 }
 
 
+func gettest(c *gin.Context){
+	var IptNhsoImage []model.IptNhsoImage
+	//var Ipt []model.Ipt
+	tx:=db.GetDB().Last(&IptNhsoImage)
+	if tx.Error !=nil{
+		fmt.Println(tx.Error)
+		return
+	}
+	c.JSON(200,IptNhsoImage)
+}
 
