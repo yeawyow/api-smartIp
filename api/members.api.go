@@ -20,6 +20,7 @@ func setupMembersAPI(router *gin.Engine) {
 		authenAPI.POST("/register", register)
 		authenAPI.GET("/getpatient/:id", getpatient)
 		authenAPI.GET("/gettest", gettest)
+		authenAPI.GET("/registvisit", registvisit)
 	
 	}
 }
@@ -96,3 +97,13 @@ func gettest(c *gin.Context){
 	c.JSON(200,IptNhsoImage)
 }
 
+func registvisit(c *gin.Context){
+	var Ovst []model.Ovst
+	//var Ipt []model.Ipt
+	tx:=db.GetDB().Last(&Ovst)
+	if tx.Error !=nil{
+		fmt.Println(tx.Error)
+		return
+	}
+	c.JSON(200,Ovst)
+}
